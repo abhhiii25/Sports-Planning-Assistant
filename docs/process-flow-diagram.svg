@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1380" viewBox="0 0 1800 1380" role="img" aria-labelledby="title desc">
+  <title id="title">Sports Planning Assistant process flow diagram</title>
+  <desc id="desc">Flowchart showing the Sports Planning Assistant process from user input, validation, CrewAI sequential task execution, tool selection, sports API lookup, analysis generation, and UI success or error output.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6f1e8"/>
+      <stop offset="100%" stop-color="#e8f1f6"/>
+    </linearGradient>
+    <linearGradient id="laneBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eef7fb"/>
+      <stop offset="100%" stop-color="#e4f0f6"/>
+    </linearGradient>
+    <linearGradient id="laneSand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf5eb"/>
+      <stop offset="100%" stop-color="#f5ecdc"/>
+    </linearGradient>
+    <linearGradient id="laneMint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eef9f1"/>
+      <stop offset="100%" stop-color="#e4f3e8"/>
+    </linearGradient>
+    <linearGradient id="stepBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#edf7fb"/>
+    </linearGradient>
+    <linearGradient id="stepSand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fbf3e6"/>
+    </linearGradient>
+    <linearGradient id="stepMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef8f0"/>
+    </linearGradient>
+    <linearGradient id="stepRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f9eef1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#16333d" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#36505b"/>
+    </marker>
+    <marker id="softArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#6a8189"/>
+    </marker>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .subtitle { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #536b74; }
+      .lane { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #17343d; letter-spacing: 0.8px; }
+      .step-title { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .step-body { font: 400 14px 'Segoe UI', Arial, sans-serif; fill: #304a53; }
+      .code { font: 600 13px Consolas, 'Courier New', monospace; fill: #274049; }
+      .label { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #49626c; }
+      .small { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #5e7780; }
+      .dash { stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1380" fill="url(#bg)"/>
+
+  <text x="70" y="72" class="title">Sports Planning Assistant: Process Flow</text>
+  <text x="70" y="102" class="subtitle">Flowchart view of how a user request moves through validation, agent execution, tool calls, and result rendering</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="150" width="420" height="1160" rx="28" fill="url(#laneBlue)" stroke="#bcd6e2" stroke-width="2"/>
+    <rect x="510" y="150" width="650" height="1160" rx="28" fill="url(#laneSand)" stroke="#d7caaf" stroke-width="2"/>
+    <rect x="1190" y="150" width="550" height="1160" rx="28" fill="url(#laneMint)" stroke="#bfd7c5" stroke-width="2"/>
+  </g>
+
+  <text x="90" y="198" class="lane">USER / STREAMLIT UI</text>
+  <text x="540" y="198" class="lane">CREWAI WORKFLOW</text>
+  <text x="1220" y="198" class="lane">TOOLS / EXTERNAL DATA</text>
+
+  <g filter="url(#shadow)">
+    <ellipse cx="270" cy="255" rx="90" ry="42" fill="url(#stepBlue)" stroke="#accfdd" stroke-width="2"/>
+    <text x="234" y="262" class="step-title">Start</text>
+
+    <rect x="130" y="340" width="280" height="90" rx="22" fill="url(#stepBlue)" stroke="#accfdd" stroke-width="2"/>
+    <text x="165" y="380" class="step-title">Enter Sports Goal</text>
+    <text x="165" y="406" class="step-body">User types a request into</text>
+    <text x="165" y="426" class="code">st.text_input(...)</text>
+
+    <rect x="130" y="470" width="280" height="90" rx="22" fill="url(#stepBlue)" stroke="#accfdd" stroke-width="2"/>
+    <text x="175" y="510" class="step-title">Click Generate Plan</text>
+    <text x="175" y="536" class="step-body">Button event starts the flow</text>
+
+    <polygon points="270,610 380,690 270,770 160,690" fill="url(#stepRose)" stroke="#d8b7c0" stroke-width="2"/>
+    <text x="220" y="685" class="step-title">Goal Empty?</text>
+    <text x="214" y="708" class="step-body">goal.strip() == ""</text>
+
+    <rect x="100" y="820" width="340" height="100" rx="22" fill="url(#stepRose)" stroke="#d8b7c0" stroke-width="2"/>
+    <text x="150" y="862" class="step-title">Show Warning</text>
+    <text x="150" y="888" class="code">st.warning("Please enter a goal")</text>
+
+    <rect x="130" y="970" width="280" height="96" rx="22" fill="url(#stepBlue)" stroke="#accfdd" stroke-width="2"/>
+    <text x="175" y="1010" class="step-title">Show Spinner</text>
+    <text x="175" y="1036" class="code">"Agents analyzing sports data..."</text>
+
+    <rect x="120" y="1120" width="300" height="100" rx="22" fill="url(#stepMint)" stroke="#b8d5c0" stroke-width="2"/>
+    <text x="168" y="1162" class="step-title">Render Success Output</text>
+    <text x="168" y="1188" class="code">st.success + st.markdown(result.raw)</text>
+
+    <rect x="90" y="1245" width="360" height="80" rx="22" fill="url(#stepRose)" stroke="#d8b7c0" stroke-width="2"/>
+    <text x="153" y="1293" class="step-title">Render Error State</text>
+    <text x="153" y="1316" class="code">st.error("Error occurred") + st.write(e)</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="650" y="230" width="360" height="95" rx="22" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="702" y="270" class="step-title">Kick Off Crew</text>
+    <text x="702" y="296" class="code">crew.kickoff(inputs={"goal": goal})</text>
+
+    <rect x="650" y="375" width="360" height="110" rx="22" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="702" y="415" class="step-title">Goal Analysis Task</text>
+    <text x="702" y="441" class="step-body">Extract sport, league, team/player,</text>
+    <text x="702" y="461" class="step-body">and requested statistics.</text>
+
+    <rect x="650" y="535" width="360" height="110" rx="22" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="716" y="575" class="step-title">Planning Task</text>
+    <text x="716" y="601" class="step-body">Create a step-by-step execution plan</text>
+    <text x="716" y="621" class="step-body">for retrieval and analysis.</text>
+
+    <rect x="650" y="695" width="360" height="110" rx="22" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="676" y="735" class="step-title">Data Retrieval Task</text>
+    <text x="676" y="761" class="step-body">Run ReAct reasoning and decide which</text>
+    <text x="676" y="781" class="step-body">tool path should be used.</text>
+
+    <polygon points="830,860 970,950 830,1040 690,950" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="755" y="944" class="step-title">What Entity Was</text>
+    <text x="741" y="968" class="step-title">Detected In Goal?</text>
+
+    <rect x="650" y="1115" width="360" height="110" rx="22" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="702" y="1155" class="step-title">Analysis Task</text>
+    <text x="702" y="1181" class="step-body">Transform retrieved data into final</text>
+    <text x="702" y="1201" class="step-body">insights, stats, and summary markdown.</text>
+
+    <ellipse cx="830" cy="1290" rx="110" ry="44" fill="url(#stepSand)" stroke="#d5c7a8" stroke-width="2"/>
+    <text x="780" y="1297" class="step-title">result.raw</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1295" y="340" width="340" height="100" rx="22" fill="url(#stepMint)" stroke="#b8d5c0" stroke-width="2"/>
+    <text x="1360" y="382" class="step-title">Load Dependencies</text>
+    <text x="1360" y="408" class="step-body">`config.py` and `.env` provide the</text>
+    <text x="1360" y="428" class="step-body">LLM and SPORTS_API base URL.</text>
+
+    <rect x="1270" y="525" width="390" height="95" rx="22" fill="url(#stepMint)" stroke="#b8d5c0" stroke-width="2"/>
+    <text x="1330" y="565" class="step-title">Tool Path: fetch_team_data</text>
+    <text x="1330" y="591" class="code">searchteams.php?t={team_name}</text>
+
+    <rect x="1270" y="680" width="390" height="95" rx="22" fill="url(#stepMint)" stroke="#b8d5c0" stroke-width="2"/>
+    <text x="1320" y="720" class="step-title">Tool Path: fetch_league_data</text>
+    <text x="1320" y="746" class="code">search_all_leagues.php</text>
+
+    <rect x="1310" y="845" width="310" height="92" rx="22" fill="url(#stepRose)" stroke="#d8b7c0" stroke-width="2"/>
+    <text x="1372" y="885" class="step-title">No Entity Found</text>
+    <text x="1372" y="911" class="step-body">Tool call is skipped and the flow</text>
+    <text x="1372" y="931" class="step-body">continues with missing-data context.</text>
+
+    <rect x="1275" y="1035" width="380" height="110" rx="22" fill="url(#stepMint)" stroke="#b8d5c0" stroke-width="2"/>
+    <text x="1328" y="1075" class="step-title">API Response / Parsed Data</text>
+    <text x="1328" y="1101" class="step-body">JSON payload or matching league record</text>
+    <text x="1328" y="1121" class="step-body">is returned to the data agent.</text>
+
+    <rect x="1300" y="1215" width="330" height="90" rx="22" fill="url(#stepRose)" stroke="#d8b7c0" stroke-width="2"/>
+    <text x="1370" y="1255" class="step-title">Exception Raised?</text>
+    <text x="1370" y="1281" class="step-body">Any runtime error bubbles back to UI.</text>
+  </g>
+
+  <line x1="270" y1="297" x2="270" y2="340" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <line x1="270" y1="430" x2="270" y2="470" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <line x1="270" y1="560" x2="270" y2="610" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+
+  <path d="M270 770 L270 820" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="285" y="803" class="label">Yes</text>
+
+  <path d="M380 690 C520 690 520 278 650 278" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="472" y="664" class="label">No</text>
+
+  <path d="M440 870 C500 870 500 255 270 255" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="396" y="842" class="label">wait for corrected input</text>
+
+  <path d="M270 770 C270 880 270 880 270 970" fill="none" stroke="#36505b" stroke-width="0"/>
+
+  <path d="M410 1018 C520 1018 520 278 650 278" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="466" y="992" class="label">valid goal</text>
+
+  <line x1="830" y1="325" x2="830" y2="375" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <line x1="830" y1="485" x2="830" y2="535" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <line x1="830" y1="645" x2="830" y2="695" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <line x1="830" y1="805" x2="830" y2="860" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+
+  <path d="M970 950 C1110 950 1110 572 1270 572" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1082" y="925" class="label">Team</text>
+
+  <path d="M830 1040 C830 1100 1130 1100 1270 728" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1090" y="812" class="label">League</text>
+
+  <path d="M690 950 C1200 950 1200 891 1310 891" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1090" y="976" class="label">Neither</text>
+
+  <line x1="1465" y1="620" x2="1465" y2="1035" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <line x1="1465" y1="775" x2="1465" y2="1035" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <path d="M1465 937 C1465 980 1465 980 1465 1035" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+
+  <path d="M1275 1090 C1180 1090 1180 1170 1010 1170" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1118" y="1082" class="label">retrieved data</text>
+
+  <path d="M830 1225 L830 1246" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <path d="M720 1290 C520 1290 520 1170 420 1170" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="548" y="1270" class="label">success path</text>
+
+  <path d="M650 278 C1260 278 1260 390 1295 390" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1120" y="252" class="label">shared config and services</text>
+
+  <path d="M830 278 C830 180 1465 180 1465 340" fill="none" stroke="#6a8189" stroke-width="0"/>
+
+  <path d="M1010 278 C1180 278 1180 1260 1300 1260" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1114" y="1236" class="label">exceptions can occur during execution</text>
+
+  <path d="M1300 1260 C1110 1260 1110 1285 450 1285" fill="none" stroke="#36505b" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="964" y="1242" class="label">error path</text>
+
+  <rect x="70" y="1330" width="670" height="34" rx="12" fill="#ffffff" opacity="0.92" stroke="#d7e3e8" stroke-width="1.5"/>
+  <text x="95" y="1353" class="small">Solid arrows = control flow. Dashed arrows = shared dependencies or cross-cutting runtime concerns.</text>
+</svg>

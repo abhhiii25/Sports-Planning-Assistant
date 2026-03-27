@@ -17,6 +17,9 @@ goal_analysis_task = Task(
     - Do NOT ask the user questions.
     - Infer missing information from context.
     - If league is mentioned (NBA, IPL, Premier League etc.) detect the sport automatically.
+    - DO NOT generate placeholders like [Insert ...]
+    - Use actual values from tool output
+    - If some data is missing, say "Data not available"
 
     Return output in this format:
 

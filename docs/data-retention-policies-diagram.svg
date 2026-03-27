@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1280" viewBox="0 0 1800 1280" role="img" aria-labelledby="title desc">
+  <title id="title">Sports Planning Assistant data retention policies diagram</title>
+  <desc id="desc">Diagram showing the current data retention posture of the Sports Planning Assistant, including local secret storage, in-memory request handling, absence of a database, external provider exposure, and retention gaps not defined in the repository.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f2e9"/>
+      <stop offset="100%" stop-color="#e8f0f5"/>
+    </linearGradient>
+    <linearGradient id="panelBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#edf7fb"/>
+      <stop offset="100%" stop-color="#e3eef5"/>
+    </linearGradient>
+    <linearGradient id="panelSand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf5ea"/>
+      <stop offset="100%" stop-color="#f3ebdc"/>
+    </linearGradient>
+    <linearGradient id="panelMint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eef8f1"/>
+      <stop offset="100%" stop-color="#e2f0e7"/>
+    </linearGradient>
+    <linearGradient id="panelRose" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f9eef1"/>
+      <stop offset="100%" stop-color="#f5e4e8"/>
+    </linearGradient>
+    <linearGradient id="cardBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef7fb"/>
+    </linearGradient>
+    <linearGradient id="cardSand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fbf4e7"/>
+    </linearGradient>
+    <linearGradient id="cardMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef8f0"/>
+    </linearGradient>
+    <linearGradient id="cardRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f9eef1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#17343d" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#36515c"/>
+    </marker>
+    <marker id="softArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#6a8189"/>
+    </marker>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .subtitle { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #556c75; }
+      .section { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #17343d; letter-spacing: 0.8px; }
+      .card-title { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .card-subtitle { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #5b737d; text-transform: uppercase; letter-spacing: 1px; }
+      .body { font: 400 14px 'Segoe UI', Arial, sans-serif; fill: #304953; }
+      .small { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #607981; }
+      .code { font: 600 13px Consolas, 'Courier New', monospace; fill: #29434c; }
+      .label { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #4b6570; }
+      .badge { font: 700 11px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .dash { stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1280" fill="url(#bg)"/>
+
+  <text x="70" y="74" class="title">Sports Planning Assistant: Data Retention Policies</text>
+  <text x="70" y="104" class="subtitle">Current-state view based on the repository: what is stored locally, what appears transient, what is sent to external services, and which retention rules are not defined in code</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="150" width="500" height="1010" rx="30" fill="url(#panelBlue)" stroke="#bad4e0" stroke-width="2"/>
+    <rect x="600" y="150" width="600" height="1010" rx="30" fill="url(#panelSand)" stroke="#d4c7ad" stroke-width="2"/>
+    <rect x="1240" y="150" width="500" height="1010" rx="30" fill="url(#panelMint)" stroke="#bfd7c5" stroke-width="2"/>
+  </g>
+
+  <text x="90" y="198" class="section">LOCAL RETENTION</text>
+  <text x="630" y="198" class="section">TRANSIENT APP DATA</text>
+  <text x="1270" y="198" class="section">EXTERNAL / POLICY GAPS</text>
+
+  <g filter="url(#shadow)">
+    <rect x="95" y="240" width="430" height="200" rx="24" fill="url(#cardBlue)" stroke="#b5d2df" stroke-width="2"/>
+    <text x="128" y="282" class="card-subtitle">SECRET STORAGE</text>
+    <text x="128" y="314" class="card-title">Environment File</text>
+    <text x="128" y="342" class="code">.env</text>
+    <text x="128" y="378" class="body">Persists on local disk until manually changed</text>
+    <text x="128" y="400" class="body">or deleted by a developer.</text>
+    <text x="128" y="424" class="small">Git status: `.env` is ignored by `.gitignore`.</text>
+
+    <rect x="95" y="490" width="430" height="170" rx="24" fill="url(#cardBlue)" stroke="#b5d2df" stroke-width="2"/>
+    <text x="128" y="532" class="card-subtitle">SOURCE CODE</text>
+    <text x="128" y="564" class="card-title">Repository Files</text>
+    <text x="128" y="600" class="body">Application code, prompts, and diagram files</text>
+    <text x="128" y="622" class="body">remain in the repo until removed.</text>
+    <text x="128" y="646" class="small">No sports query archive is implemented in code.</text>
+
+    <rect x="95" y="710" width="430" height="180" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="128" y="752" class="card-subtitle">NOT PRESENT</text>
+    <text x="128" y="784" class="card-title">No Local Database or File Archive</text>
+    <text x="128" y="820" class="body">The repo contains no SQLite, CSV export, JSON dump,</text>
+    <text x="128" y="842" class="body">or explicit write path for user requests/results.</text>
+
+    <rect x="95" y="940" width="430" height="170" rx="24" fill="url(#cardBlue)" stroke="#b5d2df" stroke-width="2"/>
+    <text x="128" y="982" class="card-subtitle">LOCAL CACHE STATUS</text>
+    <text x="128" y="1014" class="card-title">Minimal On-Disk Runtime Artifacts</text>
+    <text x="128" y="1050" class="body">Only normal Python bytecode caches are ignored.</text>
+    <text x="128" y="1072" class="small">`__pycache__/` is excluded from version control.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="635" y="240" width="530" height="180" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="668" y="282" class="card-subtitle">INPUT LIFECYCLE</text>
+    <text x="668" y="314" class="card-title">User Goal in Memory</text>
+    <text x="668" y="342" class="code">app.py -> goal = st.text_input(...)</text>
+    <text x="668" y="378" class="body">The request lives in the Streamlit session and is</text>
+    <text x="668" y="400" class="body">passed into `crew.kickoff(inputs={"goal": goal})`.</text>
+
+    <rect x="635" y="470" width="530" height="185" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="668" y="512" class="card-subtitle">PROCESSING LIFECYCLE</text>
+    <text x="668" y="544" class="card-title">Sequential Agent Context</text>
+    <text x="668" y="580" class="body">Goal text, tool outputs, and analysis content move</text>
+    <text x="668" y="602" class="body">through the CrewAI runtime during execution.</text>
+    <text x="668" y="626" class="small">No explicit retention duration is coded in the repo.</text>
+
+    <rect x="635" y="705" width="530" height="185" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="668" y="747" class="card-subtitle">OUTPUT LIFECYCLE</text>
+    <text x="668" y="779" class="card-title">Rendered Analysis</text>
+    <text x="668" y="807" class="code">result.raw -> st.markdown(final_output)</text>
+    <text x="668" y="843" class="body">Visible in the app UI after generation.</text>
+    <text x="668" y="865" class="body">Persistence beyond the session is not implemented.</text>
+
+    <rect x="635" y="940" width="530" height="170" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="668" y="982" class="card-subtitle">POLICY STATUS</text>
+    <text x="668" y="1014" class="card-title">No Deletion or TTL Rules in Code</text>
+    <text x="668" y="1050" class="body">There is no retention scheduler, cleanup job,</text>
+    <text x="668" y="1072" class="body">or explicit request/result expiration logic.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1275" y="240" width="430" height="185" rx="24" fill="url(#cardMint)" stroke="#b8d3bf" stroke-width="2"/>
+    <text x="1308" y="282" class="card-subtitle">LLM EXPOSURE</text>
+    <text x="1308" y="314" class="card-title">OpenAI Request Path</text>
+    <text x="1308" y="342" class="code">config.py -> ChatOpenAI(...)</text>
+    <text x="1308" y="378" class="body">User goal and generated context are sent to the</text>
+    <text x="1308" y="400" class="body">external LLM service during agent execution.</text>
+
+    <rect x="1275" y="475" width="430" height="185" rx="24" fill="url(#cardMint)" stroke="#b8d3bf" stroke-width="2"/>
+    <text x="1308" y="517" class="card-subtitle">SPORTS DATA EXPOSURE</text>
+    <text x="1308" y="549" class="card-title">Sports API Request Path</text>
+    <text x="1308" y="577" class="code">tools/sports_api.py -> requests.get(...)</text>
+    <text x="1308" y="613" class="body">Team or league identifiers are sent to the external</text>
+    <text x="1308" y="635" class="body">sports API for lookup responses.</text>
+
+    <rect x="1275" y="710" width="430" height="200" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="1308" y="752" class="card-subtitle">RETENTION GAP</text>
+    <text x="1308" y="784" class="card-title">Provider-Side Retention Not Defined Here</text>
+    <text x="1308" y="820" class="body">This repository does not specify how long external</text>
+    <text x="1308" y="842" class="body">providers keep prompts, traces, or API logs.</text>
+    <text x="1308" y="866" class="small">That policy must be checked in provider settings/docs.</text>
+
+    <rect x="1275" y="960" width="430" height="150" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="1308" y="1002" class="card-subtitle">TRACE RISK</text>
+    <text x="1308" y="1034" class="card-title">Crew Tracing Enabled</text>
+    <text x="1308" y="1062" class="code">crew_setup.py -> tracing=True</text>
+    <text x="1308" y="1088" class="body">Trace retention behavior is not defined in repo code.</text>
+  </g>
+
+  <line x1="525" y1="340" x2="635" y2="340" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="542" y="316" class="label">secrets loaded into runtime</text>
+
+  <line x1="525" y1="1025" x2="635" y2="1025" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="545" y="1001" class="label">no archive to clean up</text>
+
+  <line x1="900" y1="420" x2="900" y2="470" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="915" y="450" class="label">request moves through agents</text>
+
+  <line x1="900" y1="655" x2="900" y2="705" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="915" y="685" class="label">final output available in UI</text>
+
+  <line x1="900" y1="890" x2="900" y2="940" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="915" y="920" class="label">no TTL enforcement</text>
+
+  <path d="M1165 340 C1210 340 1210 340 1275 340" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1188" y="316" class="label">LLM request payload</text>
+
+  <path d="M1165 560 C1210 560 1210 560 1275 560" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1186" y="536" class="label">sports lookup data</text>
+
+  <path d="M1488 425 C1488 450 1488 450 1488 475" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1502" y="454" class="label">external API use</text>
+
+  <path d="M1488 660 C1488 685 1488 685 1488 710" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1502" y="688" class="label">retention unknown in repo</text>
+
+  <path d="M1488 910 C1488 935 1488 935 1488 960" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1502" y="938" class="label">possible trace persistence</text>
+
+  <rect x="70" y="1188" width="1010" height="54" rx="14" fill="#ffffff" opacity="0.92" stroke="#d7e2e7" stroke-width="1.5"/>
+  <text x="96" y="1221" class="small">Interpretation note: this diagram reflects the repository as-is. It highlights actual local persistence points and retention gaps, not guaranteed vendor-side retention rules.</text>
+</svg>

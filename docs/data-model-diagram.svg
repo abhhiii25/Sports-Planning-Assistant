@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1260" viewBox="0 0 1800 1260" role="img" aria-labelledby="title desc">
+  <title id="title">Sports Planning Assistant data model diagram</title>
+  <desc id="desc">Conceptual data model diagram for the Sports Planning Assistant showing the runtime entities used by the application, including the user goal, extracted goal summary, execution plan, tool selection, external API payloads, sports data payload, and final analysis report.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f2e9"/>
+      <stop offset="100%" stop-color="#e8f0f5"/>
+    </linearGradient>
+    <linearGradient id="panelBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#edf7fb"/>
+      <stop offset="100%" stop-color="#e4eef5"/>
+    </linearGradient>
+    <linearGradient id="panelSand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf5ea"/>
+      <stop offset="100%" stop-color="#f3ebdc"/>
+    </linearGradient>
+    <linearGradient id="panelMint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eef8f1"/>
+      <stop offset="100%" stop-color="#e2f0e7"/>
+    </linearGradient>
+    <linearGradient id="cardBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef7fb"/>
+    </linearGradient>
+    <linearGradient id="cardSand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fbf3e6"/>
+    </linearGradient>
+    <linearGradient id="cardMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef8f0"/>
+    </linearGradient>
+    <linearGradient id="cardRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f9eef1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#17343d" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#36515c"/>
+    </marker>
+    <marker id="softArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#6a8189"/>
+    </marker>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .subtitle { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #556c75; }
+      .section { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #17343d; letter-spacing: 0.8px; }
+      .entity-title { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .entity-subtitle { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #5b737d; text-transform: uppercase; letter-spacing: 1px; }
+      .attr { font: 400 14px 'Segoe UI', Arial, sans-serif; fill: #304953; }
+      .code { font: 600 13px Consolas, 'Courier New', monospace; fill: #29434c; }
+      .label { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #4b6570; }
+      .small { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #607981; }
+      .dash { stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1260" fill="url(#bg)"/>
+
+  <text x="70" y="74" class="title">Sports Planning Assistant: Data Model</text>
+  <text x="70" y="104" class="subtitle">Conceptual runtime entities derived from the current codebase. The application has no database schema, so this diagram models in-memory request and response objects.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="150" width="460" height="980" rx="30" fill="url(#panelBlue)" stroke="#bad4e0" stroke-width="2"/>
+    <rect x="560" y="150" width="680" height="980" rx="30" fill="url(#panelSand)" stroke="#d4c7ad" stroke-width="2"/>
+    <rect x="1280" y="150" width="460" height="980" rx="30" fill="url(#panelMint)" stroke="#bfd7c5" stroke-width="2"/>
+  </g>
+
+  <text x="90" y="198" class="section">INPUT / DERIVED MODELS</text>
+  <text x="590" y="198" class="section">ACCESS / EXTERNAL PAYLOAD MODELS</text>
+  <text x="1310" y="198" class="section">OUTPUT MODELS</text>
+
+  <g filter="url(#shadow)">
+    <rect x="95" y="240" width="390" height="180" rx="24" fill="url(#cardBlue)" stroke="#b5d2df" stroke-width="2"/>
+    <text x="128" y="282" class="entity-subtitle">INPUT ENTITY</text>
+    <text x="128" y="314" class="entity-title">GoalRequest</text>
+    <text x="128" y="342" class="code">source: app.py</text>
+    <text x="128" y="378" class="attr">goal: str</text>
+    <text x="128" y="402" class="attr">origin: "Streamlit text input"</text>
+
+    <rect x="95" y="470" width="390" height="210" rx="24" fill="url(#cardBlue)" stroke="#b5d2df" stroke-width="2"/>
+    <text x="128" y="512" class="entity-subtitle">DERIVED ENTITY</text>
+    <text x="128" y="544" class="entity-title">GoalSummary</text>
+    <text x="128" y="572" class="code">source: goal_analysis_task</text>
+    <text x="128" y="608" class="attr">sport: str</text>
+    <text x="128" y="632" class="attr">league: str | null</text>
+    <text x="128" y="656" class="attr">team_or_player: str | null</text>
+    <text x="128" y="680" class="attr">requested_stats: str</text>
+
+    <rect x="95" y="730" width="390" height="190" rx="24" fill="url(#cardBlue)" stroke="#b5d2df" stroke-width="2"/>
+    <text x="128" y="772" class="entity-subtitle">DERIVED ENTITY</text>
+    <text x="128" y="804" class="entity-title">ExecutionPlan</text>
+    <text x="128" y="832" class="code">source: planning_task</text>
+    <text x="128" y="868" class="attr">steps: list[str]</text>
+    <text x="128" y="892" class="attr">includes sport detection</text>
+    <text x="128" y="916" class="attr">includes retrieval and analysis stages</text>
+
+    <rect x="95" y="970" width="390" height="140" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="128" y="1012" class="entity-subtitle">NOT MODELED AS TABLES</text>
+    <text x="128" y="1044" class="entity-title">No Persistent Schema</text>
+    <text x="128" y="1080" class="attr">These objects exist conceptually in the runtime,</text>
+    <text x="128" y="1102" class="attr">not as database tables or ORM classes.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="595" y="240" width="610" height="180" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="628" y="282" class="entity-subtitle">ROUTING ENTITY</text>
+    <text x="628" y="314" class="entity-title">ToolSelection</text>
+    <text x="628" y="342" class="code">source: data_task / data agent reasoning</text>
+    <text x="628" y="378" class="attr">tool_name: "fetch_team_data" | "fetch_league_data"</text>
+    <text x="628" y="402" class="attr">query_value: str</text>
+
+    <rect x="595" y="470" width="280" height="220" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="628" y="512" class="entity-subtitle">EXTERNAL PAYLOAD</text>
+    <text x="628" y="544" class="entity-title">TeamSearchResponse</text>
+    <text x="628" y="572" class="code">search_team()</text>
+    <text x="628" y="608" class="attr">raw_json: dict</text>
+    <text x="628" y="632" class="attr">endpoint: /searchteams.php</text>
+    <text x="628" y="656" class="attr">team_name_query: str</text>
+    <text x="628" y="680" class="attr">nullable on failure</text>
+
+    <rect x="925" y="470" width="280" height="220" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="958" y="512" class="entity-subtitle">EXTERNAL PAYLOAD</text>
+    <text x="958" y="544" class="entity-title">LeagueMatchRecord</text>
+    <text x="958" y="572" class="code">search_league()</text>
+    <text x="958" y="608" class="attr">league_record: dict</text>
+    <text x="958" y="632" class="attr">matched_by: strLeague contains query</text>
+    <text x="958" y="656" class="attr">source_list: data["leagues"]</text>
+    <text x="958" y="680" class="attr">nullable on failure</text>
+
+    <rect x="595" y="760" width="610" height="180" rx="24" fill="url(#cardSand)" stroke="#d1c2a6" stroke-width="2"/>
+    <text x="628" y="802" class="entity-subtitle">NORMALIZED RUNTIME ENTITY</text>
+    <text x="628" y="834" class="entity-title">SportsDataPayload</text>
+    <text x="628" y="862" class="code">source: fetch_team_data() / fetch_league_data()</text>
+    <text x="628" y="898" class="attr">raw_data: str</text>
+    <text x="628" y="922" class="attr">kind: "team" | "league"</text>
+    <text x="628" y="946" class="attr">may carry "None"-like missing data</text>
+
+    <rect x="595" y="990" width="610" height="120" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="628" y="1032" class="entity-subtitle">OPTIONAL STATE</text>
+    <text x="628" y="1064" class="entity-title">MissingDataCase</text>
+    <text x="628" y="1090" class="attr">Created conceptually when lookup fails or no entity is found.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1315" y="240" width="390" height="220" rx="24" fill="url(#cardMint)" stroke="#b8d3bf" stroke-width="2"/>
+    <text x="1348" y="282" class="entity-subtitle">REPORT ENTITY</text>
+    <text x="1348" y="314" class="entity-title">AnalysisReport</text>
+    <text x="1348" y="342" class="code">source: analysis_task</text>
+    <text x="1348" y="378" class="attr">sport_section: str</text>
+    <text x="1348" y="402" class="attr">league_section: str</text>
+    <text x="1348" y="426" class="attr">team_section: str</text>
+    <text x="1348" y="450" class="attr">key_statistics: str</text>
+
+    <rect x="1315" y="520" width="390" height="190" rx="24" fill="url(#cardMint)" stroke="#b8d3bf" stroke-width="2"/>
+    <text x="1348" y="562" class="entity-subtitle">REPORT ENTITY</text>
+    <text x="1348" y="594" class="entity-title">InsightBundle</text>
+    <text x="1348" y="622" class="code">embedded in final markdown</text>
+    <text x="1348" y="658" class="attr">performance_insights: str</text>
+    <text x="1348" y="682" class="attr">summary: str</text>
+    <text x="1348" y="706" class="attr">references original goal and payload</text>
+
+    <rect x="1315" y="770" width="390" height="190" rx="24" fill="url(#cardMint)" stroke="#b8d3bf" stroke-width="2"/>
+    <text x="1348" y="812" class="entity-subtitle">DELIVERY ENTITY</text>
+    <text x="1348" y="844" class="entity-title">CrewResult</text>
+    <text x="1348" y="872" class="code">result.raw</text>
+    <text x="1348" y="908" class="attr">raw: str</text>
+    <text x="1348" y="932" class="attr">render_target: Streamlit markdown</text>
+
+    <rect x="1315" y="1010" width="390" height="100" rx="24" fill="url(#cardRose)" stroke="#d9bbc3" stroke-width="2"/>
+    <text x="1348" y="1052" class="entity-subtitle">VIEW MODEL</text>
+    <text x="1348" y="1084" class="entity-title">FinalOutputText</text>
+    <text x="1348" y="1110" class="attr">final_output = result.raw</text>
+  </g>
+
+  <line x1="485" y1="330" x2="595" y2="330" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="503" y="306" class="label">parsed into</text>
+
+  <line x1="290" y1="420" x2="290" y2="470" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="305" y="450" class="label">derive fields</text>
+
+  <line x1="290" y1="680" x2="290" y2="730" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="305" y="710" class="label">plan from summary</text>
+
+  <path d="M485 575 C540 575 540 330 595 330" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="506" y="548" class="label">guides tool choice</text>
+
+  <path d="M900 420 C900 446 735 446 735 470" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="718" y="446" class="label">team path</text>
+
+  <path d="M900 420 C900 446 1065 446 1065 470" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1038" y="446" class="label">league path</text>
+
+  <path d="M735 690 C735 724 800 724 800 760" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="724" y="724" class="label">stringify</text>
+
+  <path d="M1065 690 C1065 724 1000 724 1000 760" fill="none" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1020" y="724" class="label">stringify</text>
+
+  <line x1="1205" y1="850" x2="1315" y2="350" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1218" y="648" class="label">analyzed into</text>
+
+  <path d="M485 330 C1200 330 1200 620 1315 620" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1126" y="306" class="label">original goal also informs report</text>
+
+  <line x1="1510" y1="460" x2="1510" y2="520" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1525" y="495" class="label">expanded with insights</text>
+
+  <line x1="1510" y1="710" x2="1510" y2="770" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1525" y="744" class="label">serialized</text>
+
+  <line x1="1510" y1="960" x2="1510" y2="1010" stroke="#36515c" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1525" y="990" class="label">assigned to UI</text>
+
+  <path d="M900 940 C900 965 900 965 900 990" fill="none" stroke="#6a8189" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="915" y="970" class="label">or missing-data case</text>
+
+  <rect x="70" y="1168" width="1060" height="54" rx="14" fill="#ffffff" opacity="0.92" stroke="#d7e2e7" stroke-width="1.5"/>
+  <text x="96" y="1201" class="small">Interpretation note: entity names such as GoalSummary, ExecutionPlan, SportsDataPayload, and AnalysisReport are conceptual runtime models derived from prompts and code behavior, not literal Python classes.</text>
+</svg>

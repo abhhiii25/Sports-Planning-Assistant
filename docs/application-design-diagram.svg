@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1220" viewBox="0 0 1800 1220" role="img" aria-labelledby="title desc">
+  <title id="title">Sports Planning Assistant application design diagram</title>
+  <desc id="desc">Architecture diagram for the Sports Planning Assistant showing the browser user interface, Streamlit presentation layer, CrewAI orchestration, task and agent definitions, configuration, tool adapters, and external OpenAI and sports API services.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f2ea"/>
+      <stop offset="100%" stop-color="#e9f1f6"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#153b50"/>
+      <stop offset="100%" stop-color="#1d6174"/>
+    </linearGradient>
+    <linearGradient id="cardBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#edf6fb"/>
+    </linearGradient>
+    <linearGradient id="cardSand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fbf4e8"/>
+    </linearGradient>
+    <linearGradient id="cardMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#edf9f1"/>
+    </linearGradient>
+    <linearGradient id="cardRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f9eef1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#17343d" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#3a5560"/>
+    </marker>
+    <marker id="softArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#647e87"/>
+    </marker>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .subtitle { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #516a73; }
+      .section { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #17343d; letter-spacing: 0.8px; }
+      .card-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #17343d; }
+      .card-subtitle { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #5a737d; letter-spacing: 1px; text-transform: uppercase; }
+      .body { font: 400 15px 'Segoe UI', Arial, sans-serif; fill: #304a53; }
+      .small { font: 400 13px 'Segoe UI', Arial, sans-serif; fill: #617983; }
+      .code { font: 600 13px Consolas, 'Courier New', monospace; fill: #29434c; }
+      .label { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #4c6670; }
+      .badge { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #153b50; }
+      .dash { stroke-dasharray: 8 7; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1220" fill="url(#bg)"/>
+
+  <text x="70" y="74" class="title">Sports Planning Assistant: Application Design</text>
+  <text x="70" y="104" class="subtitle">Component architecture view showing layers, responsibilities, key files, and service dependencies</text>
+
+  <text x="70" y="160" class="section">CLIENT + PRESENTATION</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="190" width="330" height="150" rx="24" fill="url(#cardBlue)" stroke="#bad6e3" stroke-width="2"/>
+    <text x="104" y="233" class="card-subtitle">USER ENTRY</text>
+    <text x="104" y="266" class="card-title">Browser / Streamlit Session</text>
+    <text x="104" y="301" class="body">User enters a sports goal and reads</text>
+    <text x="104" y="326" class="body">the generated analysis output.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="390" width="330" height="275" rx="24" fill="url(#cardBlue)" stroke="#bad6e3" stroke-width="2"/>
+    <text x="104" y="433" class="card-subtitle">PRESENTATION LAYER</text>
+    <text x="104" y="466" class="card-title">Streamlit Application</text>
+    <text x="104" y="494" class="code">app.py</text>
+    <text x="104" y="530" class="body">Responsibilities:</text>
+    <text x="104" y="557" class="small">- page setup and title</text>
+    <text x="104" y="580" class="small">- goal text input and button action</text>
+    <text x="104" y="603" class="small">- kickoff of CrewAI execution</text>
+    <text x="104" y="626" class="small">- spinner, success, and error rendering</text>
+  </g>
+
+  <text x="470" y="160" class="section">APPLICATION CORE</text>
+  <g filter="url(#shadow)">
+    <rect x="470" y="190" width="880" height="760" rx="30" fill="#ffffff" stroke="#a8bcc7" stroke-width="2.5"/>
+    <rect x="470" y="190" width="880" height="90" rx="30" fill="url(#navy)"/>
+    <path d="M470 250 Q470 280 500 280 L1320 280 Q1350 280 1350 250" fill="url(#navy)"/>
+    <text x="510" y="243" style="font:700 24px 'Segoe UI', Arial, sans-serif; fill:#ffffff;">CrewAI Application Core</text>
+    <text x="510" y="268" style="font:400 14px 'Segoe UI', Arial, sans-serif; fill:#dcecf2;">Central assembly of agents and tasks into one sequential sports-analysis workflow</text>
+
+    <rect x="520" y="320" width="780" height="130" rx="22" fill="url(#cardSand)" stroke="#d7c9ad" stroke-width="2"/>
+    <text x="552" y="360" class="card-subtitle">ORCHESTRATION</text>
+    <text x="552" y="392" class="card-title">Crew Definition</text>
+    <text x="552" y="420" class="code">crew_setup.py</text>
+    <text x="552" y="445" class="body">Creates one `Crew` with 4 agents and 4 tasks.</text>
+    <text x="930" y="392" class="badge">process = sequential</text>
+    <text x="930" y="418" class="badge">tracing = true</text>
+
+    <rect x="520" y="495" width="360" height="390" rx="22" fill="url(#cardSand)" stroke="#d7c9ad" stroke-width="2"/>
+    <text x="552" y="535" class="card-subtitle">TASK DEFINITIONS</text>
+    <text x="552" y="567" class="card-title">Workflow Contracts</text>
+    <text x="552" y="595" class="code">tasks.py</text>
+    <text x="552" y="635" class="small">1. `goal_analysis_task`</text>
+    <text x="552" y="660" class="small">Extract sport, league, entities, requested stats</text>
+    <text x="552" y="700" class="small">2. `planning_task`</text>
+    <text x="552" y="725" class="small">Define execution steps for the request</text>
+    <text x="552" y="765" class="small">3. `data_task`</text>
+    <text x="552" y="790" class="small">Use ReAct reasoning to select tools</text>
+    <text x="552" y="830" class="small">4. `analysis_task`</text>
+    <text x="552" y="855" class="small">Format final insights and summary sections</text>
+
+    <rect x="940" y="495" width="360" height="390" rx="22" fill="url(#cardSand)" stroke="#d7c9ad" stroke-width="2"/>
+    <text x="972" y="535" class="card-subtitle">AGENT DEFINITIONS</text>
+    <text x="972" y="567" class="card-title">Execution Roles</text>
+    <text x="972" y="595" class="code">agents.py</text>
+    <text x="972" y="635" class="small">- Sports Goal Analyzer</text>
+    <text x="972" y="660" class="small">- Sports Planning Agent</text>
+    <text x="972" y="685" class="small">- Sports Data Retrieval Agent</text>
+    <text x="972" y="710" class="small">- Sports Data Analyst</text>
+    <text x="972" y="750" class="small">Each agent receives the shared LLM from</text>
+    <text x="972" y="775" class="small">`config.get_llm()`.</text>
+    <text x="972" y="815" class="small">The data retrieval agent is the only agent</text>
+    <text x="972" y="840" class="small">wired with tools.</text>
+
+    <rect x="670" y="905" width="470" height="45" rx="14" fill="#eef6fb" stroke="#bdd6e1" stroke-width="1.5"/>
+    <text x="705" y="934" class="label">Runtime path: UI -> Crew -> Tasks + Agents -> Tools/LLM -> Final markdown</text>
+  </g>
+
+  <text x="1420" y="160" class="section">CONFIGURATION + INTEGRATIONS</text>
+  <g filter="url(#shadow)">
+    <rect x="1420" y="190" width="310" height="190" rx="24" fill="url(#cardMint)" stroke="#bbd8c2" stroke-width="2"/>
+    <text x="1454" y="233" class="card-subtitle">CONFIGURATION</text>
+    <text x="1454" y="266" class="card-title">LLM Factory</text>
+    <text x="1454" y="294" class="code">config.py</text>
+    <text x="1454" y="330" class="body">`get_llm()` returns ChatOpenAI</text>
+    <text x="1454" y="355" class="body">configured with `gpt-4o-mini`.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1420" y="420" width="310" height="170" rx="24" fill="url(#cardMint)" stroke="#bbd8c2" stroke-width="2"/>
+    <text x="1454" y="463" class="card-subtitle">SECRETS + SETTINGS</text>
+    <text x="1454" y="496" class="card-title">Environment File</text>
+    <text x="1454" y="524" class="code">.env</text>
+    <text x="1454" y="560" class="body">Stores OpenAI credentials and</text>
+    <text x="1454" y="585" class="body">the sports API base URL.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1420" y="630" width="310" height="220" rx="24" fill="url(#cardMint)" stroke="#bbd8c2" stroke-width="2"/>
+    <text x="1454" y="673" class="card-subtitle">TOOL ADAPTERS</text>
+    <text x="1454" y="706" class="card-title">CrewAI Tool Layer</text>
+    <text x="1454" y="734" class="code">tools/stats_tool.py</text>
+    <text x="1454" y="770" class="small">- `fetch_team_data(team_name)`</text>
+    <text x="1454" y="795" class="small">- `fetch_league_data(league_name)`</text>
+    <text x="1454" y="835" class="body">Wraps sports lookups as CrewAI tools.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1420" y="890" width="310" height="180" rx="24" fill="url(#cardMint)" stroke="#bbd8c2" stroke-width="2"/>
+    <text x="1454" y="933" class="card-subtitle">HTTP ADAPTER</text>
+    <text x="1454" y="966" class="card-title">Sports API Client</text>
+    <text x="1454" y="994" class="code">tools/sports_api.py</text>
+    <text x="1454" y="1030" class="body">Uses `requests.get(...)` to call</text>
+    <text x="1454" y="1055" class="body">team and league search endpoints.</text>
+  </g>
+
+  <text x="70" y="730" class="section">SUPPORTING MODULES + EXTERNAL SERVICES</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="760" width="330" height="170" rx="24" fill="url(#cardRose)" stroke="#dec0c9" stroke-width="2"/>
+    <text x="104" y="803" class="card-subtitle">UTILITY MODULE</text>
+    <text x="104" y="836" class="card-title">Goal Analyzer Helper</text>
+    <text x="104" y="864" class="code">utils/goal_analyzer.py</text>
+    <text x="104" y="900" class="body">Keyword-based helper exists in the repo,</text>
+    <text x="104" y="925" class="body">but it is not wired into the current runtime.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="970" width="330" height="170" rx="24" fill="url(#cardRose)" stroke="#dec0c9" stroke-width="2"/>
+    <text x="104" y="1013" class="card-subtitle">EXTERNAL LLM SERVICE</text>
+    <text x="104" y="1046" class="card-title">OpenAI API</text>
+    <text x="104" y="1082" class="body">Provides model inference for all agents</text>
+    <text x="104" y="1107" class="body">through the ChatOpenAI client.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="470" y="990" width="880" height="150" rx="24" fill="url(#cardRose)" stroke="#dec0c9" stroke-width="2"/>
+    <text x="508" y="1033" class="card-subtitle">EXTERNAL SPORTS DATA SOURCE</text>
+    <text x="508" y="1066" class="card-title">Sports API Service</text>
+    <text x="508" y="1102" class="body">Receives HTTP lookups for teams and leagues, then returns JSON data used by the data-retrieval agent and final analysis stage.</text>
+  </g>
+
+  <line x1="235" y1="340" x2="235" y2="390" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="248" y="372" class="label">user interaction</text>
+
+  <path d="M400 525 C440 525 440 385 520 385" fill="none" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="410" y="490" class="label">calls `crew.kickoff(...)`</text>
+
+  <line x1="910" y1="450" x2="910" y2="495" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="924" y="482" class="label">binds</text>
+
+  <line x1="910" y1="450" x2="1120" y2="495" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1026" y="482" class="label">assigns</text>
+
+  <path d="M1300 690 C1360 690 1360 740 1420 740" fill="none" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1328" y="668" class="label">data agent invokes tools</text>
+
+  <path d="M1575 850 C1575 870 1575 870 1575 890" fill="none" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1588" y="876" class="label">delegates HTTP</text>
+
+  <path d="M1575 1070 C1575 1125 1310 1125 1250 1125" fill="none" stroke="#3a5560" stroke-width="3.5" marker-end="url(#arrow)"/>
+  <text x="1428" y="1152" class="label">team / league data</text>
+
+  <path d="M1420 505 C1388 505 1388 294 1280 294" fill="none" stroke="#647e87" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1305" y="274" class="label">loads settings</text>
+
+  <path d="M1420 292 C1384 292 1384 292 1350 292" fill="none" stroke="#647e87" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1324" y="319" class="label">shared LLM provider</text>
+
+  <path d="M1420 505 C1400 505 1400 980 400 980" fill="none" stroke="#647e87" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="884" y="960" class="label">credentialed model access</text>
+
+  <path d="M400 845 C448 845 448 845 470 845" fill="none" stroke="#647e87" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="414" y="820" class="label">not in main execution path</text>
+
+  <path d="M1575 590 C1575 620 1575 620 1575 630" fill="none" stroke="#647e87" stroke-width="3" class="dash" marker-end="url(#softArrow)"/>
+  <text x="1588" y="615" class="label">SPORTS_API</text>
+
+  <path d="M235 665 C235 760 235 760 235 760" fill="none" stroke="#3a5560" stroke-width="0"/>
+
+  <rect x="70" y="1148" width="520" height="44" rx="14" fill="#ffffff" opacity="0.9" stroke="#d4e1e7" stroke-width="1.5"/>
+  <text x="96" y="1177" class="small">Solid arrows = primary runtime dependency or call path. Dotted arrows = configuration wiring or non-runtime relationships.</text>
+</svg>
