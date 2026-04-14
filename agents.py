@@ -2,8 +2,6 @@ from crewai import Agent
 from config import get_llm
 from tools.stats_tool import fetch_team_data, fetch_league_data
 
-llm = get_llm()
-
 
 goal_analyzer_agent = Agent(
     role="Sports Goal Analyzer",
@@ -24,7 +22,8 @@ Never ask the user questions.
 Always infer information from the goal.
 """,
 
-    llm=llm,
+    llm="gpt-4o-mini",
+    temperature=0.3,
     verbose=True
 )
 
@@ -39,7 +38,8 @@ Expert sports strategist that creates structured plans
 to retrieve and analyze sports data.
 """,
 
-    llm=llm,
+    llm="gpt-4o-mini",
+    temperature=0.3,
     verbose=True
 )
 
@@ -70,8 +70,8 @@ which tool to call based on the user's goal.
 
     tools=[fetch_team_data, fetch_league_data],
 
-    llm=llm,
-
+    llm="gpt-4o-mini",
+    temperature=0.3,
     verbose=True,
 
     allow_delegation=False
@@ -88,6 +88,7 @@ Professional sports data analyst capable of analyzing
 team performance and statistics.
 """,
 
-    llm=llm,
+    llm="gpt-4o-mini",
+    temperature=0.3,
     verbose=True
 )
